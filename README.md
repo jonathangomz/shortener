@@ -34,5 +34,5 @@ $ npm run start:prod
 ## Stay in touch
 
 - Author - [Jonathan Gomez](https://jonathangomz.github.io)
-- Website - [https://jonathangomz.github.io]()
+- Website - [Shortener on Vercel](https://shortener-pi-ten.vercel.app/api/docs)
 
