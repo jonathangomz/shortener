@@ -7,9 +7,9 @@ import { FindUserDto } from './dto/find-user.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('register')
-  register(@Body() newUser: UserDto) {
-    return this.authService.create(newUser);
+  @Post('signup ')
+  signup (@Body() newUser: UserDto) {
+    return this.authService.signup (newUser);
   }
 
   @Post('login')

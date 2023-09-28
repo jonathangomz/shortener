@@ -17,7 +17,7 @@ export class AuthService {
     private jwtService: JwtService,
     ) {}
 
-  async create(newUser: UserDto) {
+  async signup (newUser: UserDto) {
     // Check if exist
     let user: UserDocument = await this.userModel.findOne({ email: newUser.email });
     if(user) {
