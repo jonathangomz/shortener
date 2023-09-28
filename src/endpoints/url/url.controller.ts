@@ -3,8 +3,10 @@ import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { FindUrlDto } from './dto/find-url.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-guard';
+import { ApiTags } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
+@ApiTags('urls')
 @Controller('url')
 export class UrlController {
   constructor(private readonly urlService: UrlService) {}
