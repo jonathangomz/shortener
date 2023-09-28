@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { UrlModule } from './endpoints/url/url.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthModule } from './endpoints/auth/auth.module';
 import { AuthService } from './services/auth/auth.service';
-import databaseConfig from './configuration/database-config';
+import { UserModule } from './endpoints/user/user.module';
+import { databaseConfig } from './configuration';
+import { AuthModule } from './services/auth/auth.module';
 
 @Module({
   imports: [
@@ -21,9 +22,10 @@ import databaseConfig from './configuration/database-config';
       }),
       inject: [ConfigService],
     }),
-    AuthModule
+    AuthModule,
+    UserModule
   ],
   controllers: [AppController],
-  providers: [AppService, AuthService],
+  providers: [AppService],
 })
 export class AppModule {}

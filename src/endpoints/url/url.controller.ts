@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { FindUrlDto } from './dto/find-url.dto';
-import { JwtAuthGuard } from '../auth/guards/jwt-guard';
+import { JwtAuthGuard } from '../../services/auth/guards/jwt-guard';
 import { ApiTags } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
