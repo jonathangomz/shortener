@@ -11,7 +11,8 @@ export class UrlService {
     this.baseShortUrl = 'https://gb.com'
   }
 
-  async create(url: string): Promise<{ url: string; }> {  
+  async create(url: string): Promise<{ url: string; }> { 
+    // TODO: Check if exist to avoid duplicated
     let shortenedUrl: string = this.shortenUrl(url);
     
     await this.urlModel.create({url, shortenedUrl});

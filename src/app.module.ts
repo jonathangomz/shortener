@@ -4,7 +4,9 @@ import { AppService } from './app.service';
 import { UrlModule } from './endpoints/url/url.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import databaseConfig from './config/database-config';
+import { AuthModule } from './endpoints/auth/auth.module';
+import { AuthService } from './services/auth/auth.service';
+import databaseConfig from './configuration/database-config';
 
 @Module({
   imports: [
@@ -18,9 +20,10 @@ import databaseConfig from './config/database-config';
         uri: configService.get<string>('mongo.uri'),
       }),
       inject: [ConfigService],
-    })
+    }),
+    AuthModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthService],
 })
 export class AppModule {}

@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { FindUrlDto } from './dto/find-url.dto';
+import { JwtAuthGuard } from '../auth/guards/jwt-guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('url')
 export class UrlController {
   constructor(private readonly urlService: UrlService) {}
