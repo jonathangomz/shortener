@@ -32,11 +32,11 @@ export class UrlService {
   }
 
   private shortenUrl(url: string): string {
-    let id: string = this.makeid(5);
+    let id: string = this.generateId(5);
     return `${this.baseShortUrl}/${id}`;
   }
 
-  private makeid(length: number): string {
+  private generateId(length: number): string {
     let result: string = '';
     const characters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength: number = characters.length;
