@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Url } from './entities/url.entity';
+import { Url, UrlDocument } from './entities/url.entity';
 import { Model } from 'mongoose';
 
 @Injectable()
@@ -11,11 +11,16 @@ export class UrlService {
     this.baseShortUrl = 'https://gb.com'
   }
 
-  async create(url: string): Promise<{ url: string; }> { 
-    // TODO: Check if exist to avoid duplicated
-    let shortenedUrl: string = this.shortenUrl(url);
+  async create(newUrl: string): Promise<{ url: string; }> {
+    // If exist return the shortened url
+    const url: UrlDocument = await this.urlModel.findOne({ url: newUrl });
+    if(url) {
+      return { url: url.shortenedUrl }
+    }
+
+    let shortenedUrl: string = this.shortenUrl(newUrl);
     
-    await this.urlModel.create({url, shortenedUrl});
+    await this.urlModel.create({url: newUrl, shortenedUrl});
     
     return {
       url: shortenedUrl
